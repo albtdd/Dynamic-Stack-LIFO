@@ -1,12 +1,12 @@
 @echo "Dynamic Stack - Alberto Todde <alberto.tdd@gmail.com>"
 OS := $(shell uname)
 ifeq ($(OS), Linux)
-    ARTICLE_DIR = ../article/
-    NODE_DIR = ../node/
+    ARTICLE_DIR = article/
+    NODE_DIR = node/
     CLEAN = rm -f
 else # Windows
-    ARTICLE_DIR ..\article\
-    NODE_DIR = ..\node\
+    ARTICLE_DIR article\
+    NODE_DIR = node\
     CLEAN = del
 endif
 
