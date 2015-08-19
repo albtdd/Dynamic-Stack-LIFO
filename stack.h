@@ -32,9 +32,9 @@ extern "C" {
 #endif
 
 #ifdef __unix__
-#include "../node/node.h"
+#include "node/node.h"
 #else
-#include "..\node\node.h"
+#include "node\node.h"
 #endif
 
 #include <stdlib.h>
