@@ -1,4 +1,3 @@
-@echo "Dynamic Stack - Alberto Todde <alberto.tdd@gmail.com>"
 OS := $(shell uname)
 ifeq ($(OS), Linux)
     ARTICLE_DIR = article/
