@@ -128,7 +128,7 @@ bool stack_push(Stack *stack, const Article *article);
  *
  * @param stack The stack pointer
  *
- * @return The const pointer to the article
+ * @return The pointer to the article
  *
  * @note You must use article_delete with this pointer after the use
  * @note No crash if param is NULL, returns 0
