@@ -20,7 +20,7 @@ stack_push(my_lifo, art);
 NB: stack_push creates a own copy (deep copy) of Article. It's your responsibility delete all the articles created,
 when they are not more useful, with:
 ```C
-delete_article(art)
+article_delete(art)
 ```
 
 To extract an item from the stack you can simply use:
