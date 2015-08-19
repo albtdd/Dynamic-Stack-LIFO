@@ -1,9 +1,6 @@
 # Dynamic-Stack-LIFO
 A simple dynamic Stack. A Stack follows the LIFO pattern's rules.
 
-Dynamic Stack - LIFO
-====================
-
 A stack is a simple data structure that follows the simple rule: Last In - First Out
 The last item inserted (push) into the stack is the first that comes out (pop).
 
