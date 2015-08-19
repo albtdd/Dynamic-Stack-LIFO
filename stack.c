@@ -89,7 +89,7 @@ bool stack_push(Stack *stack, const Article *article) {
 Article* stack_pop(Stack *stack) {
     if (!stack_isempty(stack)) {
         Article *copy = node_get_content(stack->top);
-        if (copy) {
+        if (copy != 0) {
             Node *old_top = stack->top;
             stack->top = node_get_next(stack->top);
             node_delete(old_top);
