@@ -18,11 +18,11 @@ RFLAGS = -DNDEBUG -O3 -funroll-loops
 
 LIBS =
 
-SOURCES = $(ARTICLE_DIR)article.c $(NODE_DIR)node.c queue.c main.c
+SOURCES = $(ARTICLE_DIR)article.c $(NODE_DIR)node.c stack.c main.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
-EXECUTABLE = queue
+EXECUTABLE = stack
 
 all: $(SOURCES) $(EXECUTABLE)
 	
