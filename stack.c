@@ -88,14 +88,12 @@ bool stack_push(Stack *stack, const Article *article) {
 
 Article* stack_pop(Stack *stack) {
     if (!stack_isempty(stack)) {
-        Article *copy = node_get_content(stack->top);
-        if (copy != 0) {
-            Node *old_top = stack->top;
-            stack->top = node_get_next(stack->top);
-            node_delete(old_top);
-            stack->size--;
-            return copy;
-        }
+        Article *ptr = node_get_ptr(stack->top);
+        Node *old_top = stack->top;
+        stack->top = node_get_next(stack->top);
+        node_remove(old_top);   // Don't delete article in the node.
+        stack->size--;
+        return ptr;
     }
     return 0;
 }
@@ -103,8 +101,8 @@ Article* stack_pop(Stack *stack) {
 
 const Article* stack_peek(const Stack *stack) {
     if (!stack_isempty(stack)) {
-        const Article *copy = node_get_content_ptr(stack->top);
-        return copy;
+        const Article *const_ptr = node_get_const_ptr(stack->top);
+        return const_ptr;
     }
     return 0;
 }
@@ -114,9 +112,19 @@ void stack_iterator_const(const Stack *stack, const_iter_action action) {
     if (stack != 0 && action != 0) {
         Node *ptr = stack->top;
         while (ptr != 0) {
-            action(node_get_content_ptr(ptr));
+            action(node_get_const_ptr(ptr));
             ptr = node_get_next(ptr);
         }
     }
 }
 
+
+void stack_iterator(Stack *stack, iter_action action) {
+    if (stack != 0 && action != 0) {
+        Node *ptr = stack->top;
+        while (ptr != 0) {
+            action(node_get_ptr(ptr));
+            ptr = node_get_next(ptr);
+        }
+    }
+}
