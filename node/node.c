@@ -56,12 +56,22 @@ void node_delete(Node *node) {
 }
 
 
-Article* node_get_content(const Node *node) {
+void node_remove(Node *node) {
+    free(node);
+}
+
+
+Article* node_get_content_copy(const Node *node) {
     return node != 0 ? article_copy(node->article) : 0;
 }
 
 
-const Article* node_get_content_ptr(const Node *node) {
+const Article* node_get_const_ptr(const Node *node) {
+    return node != 0 ? node->article : 0;
+}
+
+
+Article* node_get_ptr(const Node *node) {
     return node != 0 ? node->article : 0;
 }
 
