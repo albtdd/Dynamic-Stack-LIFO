@@ -60,16 +60,33 @@ Node* node_new(const Article *article);
 
 
 /**
- * @brief Frees memory area allocated with node_new
+ * @brief Frees all the memory area allocated with node_new
  *
  * @param node The pointer to the node
  *
  * @return nothing
  *
- * @note No crash if the param is NULL
+ * @note Used when also the Article must be deleted
+ *       No crash if the param is NULL
  *       Undefined behavior if param is an invalid pointer
  */
 void node_delete(Node *node);
+
+
+/**
+ * @brief Frees memory area allocated with node_new excpet its Article
+ *          memory area
+ *
+ * @param node The pointer to the node
+ *
+ * @return nothing
+ *
+ * @note Used when the Article must be used by another pointer
+ *       No crash if the param is NULL
+ *       Undefined behavior if param is an invalid pointer
+ */
+void node_remove(Node *node);
+
 
 
 /**
@@ -82,7 +99,7 @@ void node_delete(Node *node);
  * @note No crash if param is NULL
  *       Undefined behavior if param is an invalid pointer
  */
-Article* node_get_content(const Node *node);
+Article* node_get_content_copy(const Node *node);
 
 
 /**
@@ -90,12 +107,25 @@ Article* node_get_content(const Node *node);
  *
  * @param node The pointer to the node
  *
- * @return A const pointer ti the content of the node
+ * @return A const pointer to the content of the node
  *
  * @note No crash if the param is NULL
  *       Undefined behavior if param is an invalid pointer
  */
-const Article* node_get_content_ptr(const Node *node);
+const Article* node_get_const_ptr(const Node *node);
+
+
+/**
+ * @brief Gets a pointer to the content of the node
+ *
+ * @param node The pointer to the node
+ *
+ * @return A pointer to the content of the node
+ *
+ * @note No crash if the param is NULL
+ *       Undefined behavior if param is an invalid pointer
+ */
+Article* node_get_ptr(const Node *node);
 
 
 /**
