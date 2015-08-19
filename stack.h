@@ -124,11 +124,13 @@ bool stack_push(Stack *stack, const Article *article);
 
 
 /**
- * @brief Gets an article from the top of stack and remove it from the stack
+ * @brief Pop the last article inserted.
+ *        Gets a pointer to the article in the node. The node is deleted
+ *        but not the article in the node.
  *
  * @param stack The stack pointer
  *
- * @return The pointer to the article
+ * @return The const pointer to the article
  *
  * @note You must use article_delete with this pointer after the use
  * @note No crash if param is NULL, returns 0
@@ -138,7 +140,8 @@ Article* stack_pop(Stack *stack);
 
 
 /**
- * @brief Gets an article from the top of stack without remove it
+ * @brief Pop the last article inserted.
+ *        Gets a pointer to the article in the node. The node is not deleted
  *
  * @param stack The stack pointer
  *
@@ -164,6 +167,20 @@ const Article* stack_peek(const Stack *stack);
  *       Undefined behavior any param is an invalid pointer
  */
 void stack_iterator_const(const Stack *stack, const_iter_action action);
+
+/**
+ * @brief A Iter from top to bottom of the stack
+ *
+ * @param queue The stack pointer
+ * @param action Pointer to the function that acts on every item
+ *
+ * @return nothing
+ *
+ * @note You can modify all the items of the stack
+ * @note No crash if any param is NULL
+ *       Undefined behavior any param is an invalid pointer
+ */
+void stack_iterator(Stack *stack, iter_action action);
 
 
 #ifdef __cplusplus
