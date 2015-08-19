@@ -43,10 +43,25 @@ When you have finished to using the stack:
 stack_delete(my_lifo):
 ```
 
-In main.c ther is a simple demo of the stack usage.
+To iter the Stack:
+```C
+void stack_iterator_const(const Stack *stack, const_iter_action action);
+void stack_iterator(Stack *stack, iter_action action);
+```
+The functions iter, have as parameters, the stack in use and the pointer to the function to be applied to the elements of the stack. 
+The const-function can only read the elements, the non-const-functions can read and write to the elements.
 
-See the .h files to read the descriptions of all the functions.
 
+To know how many entries contain the stack is used:
+```C
+size_t stack_size(const Stack *stack);
+```
+
+To know if the stack is empty or no is used:
+```C
+bool stack_isempty(const Stack *stack);
+```
+returns true if the stack is empty (or NULL), false otherwise
 
 Author
 ======
