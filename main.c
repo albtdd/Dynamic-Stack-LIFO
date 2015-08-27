@@ -11,7 +11,7 @@
 
 
 int main(void) {
-    Stack *lifo = stack_new();
+    Stack *lifo = stack_new(INF);
     if (lifo) {
 
         printf("\nStack is empty: %s\n",
