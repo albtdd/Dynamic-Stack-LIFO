@@ -59,13 +59,13 @@ To know how many entries contain the stack is used:
 size_t stack_size(const Stack *stack);
 ```
 
-To know if the stack is empty or no:
+To know if the stack is empty or not:
 ```C
 bool stack_isempty(const Stack *stack);
 ```
 returns true if the stack is empty (or NULL), false otherwise
 
-To know if the stack is full or no:
+To know if the stack is full or not:
 ```C
 bool stack_isfull(const Stack *stack);
 ```
