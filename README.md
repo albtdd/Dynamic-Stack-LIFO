@@ -8,8 +8,10 @@ Dynamic stack is not limited in size. You can add all the items you want. The on
 
 You can create a new stack with:
 ```C
-Stack *my_lifo = stack_new();
+Stack *my_lifo = stack_new(size_t max_size);
 ```
+max_size defines the max item allowed into the stack.
+0 means infinity size. I have defined INF for this purpose. 
 
 I have created an item to push into the stack called Article. It's only an example.
 ```C
@@ -57,11 +59,18 @@ To know how many entries contain the stack is used:
 size_t stack_size(const Stack *stack);
 ```
 
-To know if the stack is empty or no is used:
+To know if the stack is empty or no:
 ```C
 bool stack_isempty(const Stack *stack);
 ```
 returns true if the stack is empty (or NULL), false otherwise
+
+To know if the stack is full or no:
+```C
+bool stack_isfull(const Stack *stack);
+```
+returns true if the stack is full (or NULL), false otherwise
+
 
 Author
 ======
