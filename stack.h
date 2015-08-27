@@ -31,7 +31,7 @@
 extern "C" {
 #endif
 
-ifdef __unix__
+#ifdef __unix__
 #include "node/node.h"
 #else
 #include "node\node.h"
