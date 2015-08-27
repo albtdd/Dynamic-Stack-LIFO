@@ -32,9 +32,9 @@ extern "C" {
 #endif
 
 #ifdef __unix__
-#include "node/node.h"
+#include "../node/node.h"
 #else
-#include "node\node.h"
+#include "..\node\node.h"
 #endif
 
 #include <stdlib.h>
@@ -54,6 +54,10 @@ typedef void (*const_iter_action)(const Article *);
 typedef void (*iter_action)(Article *);
 
 
+// Infinity 
+#define INF 0
+
+
 /**
  * @brief Creates a new empty Stack
  *
@@ -64,7 +68,7 @@ typedef void (*iter_action)(Article *);
  * @note You must use this function before any other action
  *       You must free memory allocated with stack_delete
  */
-Stack* stack_new(void);
+Stack* stack_new(size_t max_size);
 
 
 /**
@@ -100,10 +104,23 @@ size_t stack_size(const Stack *stack);
  *
  * @return true if the stack is empty, false otherwise
  *
- * @note No crash if param is NULL, returns false
+ * @note No crash if param is NULL, returns false (empty)
  *       Undefined behavior if param is an invalid pointer
  */
 bool stack_isempty(const Stack *stack);
+
+
+/**
+ * @brief Checks if the stack is full or no
+ *
+ * @param stack The pointer to the stack
+ *
+ * @return true if the stack is full, false otherwise
+ *
+ * @note No crash if param is NULL, returns true (full)
+ *       Undefined behavior if param is an invalid pointer
+ */
+bool stack_isfull(const Stack *stack);
 
 
 /**
