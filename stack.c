@@ -28,17 +28,20 @@
 #include <stdlib.h>
 
 
+
 struct stack_t {
-    Node *top;
-    size_t size;
+    Node *top;          // Pointer to the Top of the stack
+    size_t max_size;    // Max nodes allowed (0 means INF)
+    size_t size;        // Current size of the stack
 };
 
 
-Stack* stack_new(void) {
+Stack* stack_new(size_t max_size) {
     Stack *stack = malloc(sizeof *stack);
     if (stack != 0) {
         stack->top = 0;
         stack->size = 0;
+        stack->max_size = max_size;
     }
     return stack;
 }
@@ -68,18 +71,28 @@ bool stack_isempty(const Stack *stack) {
 }
 
 
+bool stack_isfull(const Stack *stack) {
+    if (stack != 0) {
+        return stack->max_size != INF ? stack->size == stack->max_size : false;
+    }
+    return true;
+}
+
+
 bool stack_push(Stack *stack, const Article *article) {
     if (stack != 0) {
-        Node *node = node_new(article);
-        if (node != 0) {
-            if (stack_isempty(stack)) {
-                stack->top = node;
-            } else {
-                node_set_next(node, stack->top);
-                stack->top = node;
+        if (!stack_isfull(stack)) {
+            Node *node = node_new(article);
+            if (node != 0) {
+                if (stack_isempty(stack)) {
+                    stack->top = node;
+                } else {
+                    node_set_next(node, stack->top);
+                    stack->top = node;
+                }
+                stack->size++;
+                return true;
             }
-            stack->size++;
-            return true;
         }
     }
     return false;
