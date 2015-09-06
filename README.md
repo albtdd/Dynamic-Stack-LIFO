@@ -73,7 +73,7 @@ returns true if the stack is full (or NULL), false otherwise
 
 Note
 ====
-I added two repositories (Article and Node) with which to create the libraries used in this project.
+I added a repository (Node) with which to create the node used in this project.
 
 Author
 ======
